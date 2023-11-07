@@ -1,0 +1,32 @@
+html lang="en">
+    <head>
+        <link rel="stylesheet" herf="https://pyscript.net/latest/pyscript.css" />
+        <script defer src="https://pyscript.net/latest/pyscript"></script>
+        <style>
+            label{
+                display:block;
+            }
+        </style>
+    </head>
+    <body>
+        <py-config>
+            packages
+        </py-config>
+        <form>
+            <label for="guess">Guess:</label><input name="guess" id="guess">
+
+           <button type="button" id="submit">Check Guess</button>
+           <label for="result">Result:</label><div name="result" id="result"></div>
+        </form>
+        <pyscript>
+            import numpy as np
+            selection = np.random.randint(0,100,1)[0]
+            result = Element("Result").write(selection)
+
+            from pyscript import when 
+            @when("click", selector="#submit")
+            def check_guess(4):
+                user_guess = int(Element("guess").value)
+                result = Element("result")
+                if user_guess == selection:
+                    result.write("congra
